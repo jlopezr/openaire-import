@@ -8,9 +8,6 @@ def obtener_organizaciones_paginadas(db, per_page=10, total_pages=None):
     page_size = per_page
     cursor = "*"  # cursor inicial para la primera página
 
-    if total_pages is None:
-        total_pages = 1000
-
     if total_pages is None or total_pages <= 0:
         it = itertools.count(1)
     else:
