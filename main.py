@@ -1,12 +1,22 @@
 import requests
-import json
+import argparse
+from pymongo import MongoClient
+import itertools
 
-def obtener_organizaciones_paginadas():
+def obtener_organizaciones_paginadas(db, per_page=10, total_pages=None):
     url = "https://api.openaire.eu/graph/v1/organizations"
-    page_size = 5
+    page_size = per_page
     cursor = "*"  # cursor inicial para la primera página
 
-    for pagina in range(1, 4):  # 3 páginas
+    if total_pages is None:
+        total_pages = 1000
+
+    if total_pages is None or total_pages <= 0:
+        it = itertools.count(1)
+    else:
+        it = range(1, total_pages + 1)
+
+    for pagina in it:
         params = {
             "pageSize": page_size,
             "cursor": cursor
@@ -23,6 +33,8 @@ def obtener_organizaciones_paginadas():
         print(f"\n--- Página {pagina} ---")
         for org in data.get("results", []):
             print(f"ID: {org.get('id')}, Nombre: {org.get('legalName')}")
+            # Guardar la organización en MongoDB
+            db.organizaciones.insert_one(org)
 
         # Obtener el siguiente cursor
         cursor = data.get("header", {}).get("nextCursor")
@@ -30,5 +42,37 @@ def obtener_organizaciones_paginadas():
             print("No hay más páginas.")
             break
 
+def abrir_conexion_mongo():
+    # abre una conexión a MongoDB en localhost:27017
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client["openaire"]
+    return db
+    
+def main():
+    parser = argparse.ArgumentParser(description="Procesa elementos por páginas.")
+    parser.add_argument('--per-page', type=int, default=10, help='Número de elementos por página')
+    parser.add_argument('--total-pages', type=int, default=None, help='Número total de páginas a procesar (si no se especifica, procesa todas)')
+    parser.add_argument('--drop', action='store_true', help='Vacía la colección antes de empezar')
+    args = parser.parse_args()
+
+
+    # Abrir conexión a MongoDB
+    db = abrir_conexion_mongo()
+
+    # Si se especifica --drop, vaciar la colección
+    if args.drop:
+        print("Vaciando la colección 'organizaciones'...")
+        db.organizaciones.drop()
+
+    print("Obteniendo organizaciones paginadas...")
+    obtener_organizaciones_paginadas(db, args.per_page, args.total_pages)
+
+    # Mostrar el número total de organizaciones guardadas
+    total_organizaciones = db.organizaciones.count_documents({})
+    print(f"\nTotal de organizaciones guardadas: {total_organizaciones}")
+
+    # Cerrar la conexión a MongoDB
+    db.client.close()
+
 if __name__ == "__main__":
-    obtener_organizaciones_paginadas()
+    main()
