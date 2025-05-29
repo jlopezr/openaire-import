@@ -1,0 +1,185 @@
+{
+  "header": {
+    "numFound": 8,
+    "maxScore": 38.64595,
+    "queryTime": 492,
+    "page": 1,
+    "pageSize": 10
+  },
+  "results": [
+    {
+      "legalShortName": "Universitat Politècnica de Catalunya",
+      "legalName": "Universitat Politècnica de Catalunya",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "UNKNOWN",
+        "label": "Unknown"
+      },
+      "id": "pending_org_::5d675036636044ef0b6141a24fd16cc1",
+      "pids": null
+    },
+    {
+      "legalShortName": "Universitat Politècnica de Catalunya, Centro Internacional de Métodos Numéricos en ingenieria (CIMNE)",
+      "legalName": "Universitat Politècnica de Catalunya, Centro Internacional de Métodos Numéricos en ingenieria (CIMNE)",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "UNKNOWN",
+        "label": "Unknown"
+      },
+      "id": "doajarticles::2008b013186bb9ea69ade7807528a15c",
+      "pids": null
+    },
+    {
+      "legalShortName": "Universitat Politècnica de Catalunya - Departament d`Enginyera Electronica",
+      "legalName": "Universitat Politècnica de Catalunya - Departament d`Enginyera Electronica",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "UNKNOWN",
+        "label": "Unknown"
+      },
+      "id": "pending_org_::854993fc61df891926b76a4d22c65609",
+      "pids": null
+    },
+    {
+      "legalShortName": "Universitat Politècnica de Catalunya",
+      "legalName": "Universitat Politècnica de Catalunya",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "UNKNOWN",
+        "label": "Unknown"
+      },
+      "id": "pending_org_::d490754ebf2124446694b16995b0c4b8",
+      "pids": null
+    },
+    {
+      "legalShortName": "UNI: Universitat Politècnica de Catalunya Barcelona E",
+      "legalName": "UNI: Universitat Politècnica de Catalunya Barcelona E",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "ES",
+        "label": "Spain"
+      },
+      "id": "pending_org_::a1759f8a0b04a7510bb34bbb7f188933",
+      "pids": null
+    },
+    {
+      "legalShortName": "IRII",
+      "legalName": "Institute of Robotics and Industrial Informatics",
+      "websiteUrl": "https://www.iri.upc.edu/",
+      "alternativeNames": [
+        "Institut de Robòtica i Informàtica Industrial",
+        "Institute of Robotics and Industrial Informatics",
+        "Instituto de Robótica e Informática Industrial",
+        "IRII"
+      ],
+      "country": {
+        "code": "ES",
+        "label": "Spain"
+      },
+      "id": "openorgs____::9e48544fcfde5e166147c0372547e082",
+      "pids": [
+        {
+          "scheme": "Wikidata",
+          "value": "Q3815300"
+        },
+        {
+          "scheme": "ISNI",
+          "value": "0000000417632928"
+        },
+        {
+          "scheme": "GRID",
+          "value": "grid.507641.1"
+        },
+        {
+          "scheme": "ROR",
+          "value": "https://ror.org/00mcdyn90"
+        }
+      ]
+    },
+    {
+      "legalShortName": "Universitat Politècnica de Catalunya",
+      "legalName": "Universitat Politècnica de Catalunya",
+      "websiteUrl": null,
+      "alternativeNames": null,
+      "country": {
+        "code": "UNKNOWN",
+        "label": "Unknown"
+      },
+      "id": "pending_org_::d9895e4dda70eb9c852aa84361285cf3",
+      "pids": null
+    },
+    {
+      "legalShortName": "UPC",
+      "legalName": "Universitat Politècnica de Catalunya",
+      "websiteUrl": "http://www.upc.edu",
+      "alternativeNames": [
+        "BarcelonaTECH",
+        "Polytechnic University of Catalonia",
+        "Universidade Politécnica de Cataluña",
+        "Universidad Politécnica de Cataluña",
+        "Universitat Politècnica de Catalunya",
+        "UPC"
+      ],
+      "country": {
+        "code": "ES",
+        "label": "Spain"
+      },
+      "id": "openorgs____::97dd3670a610655bd733fcf83d0eed4d",
+      "pids": [
+        {
+          "scheme": "OrgReg",
+          "value": "ES0020"
+        },
+        {
+          "scheme": "doi",
+          "value": "10.13039/501100014374"
+        },
+        {
+          "scheme": "RingGold",
+          "value": "RingGold:16767"
+        },
+        {
+          "scheme": "OrgRef",
+          "value": "63871"
+        },
+        {
+          "scheme": "mag_id",
+          "value": "9617848"
+        },
+        {
+          "scheme": "FundRef",
+          "value": "501100014374"
+        },
+        {
+          "scheme": "ISNI",
+          "value": "000000041937028X"
+        },
+        {
+          "scheme": "ROR",
+          "value": "https://ror.org/03mb6wj31"
+        },
+        {
+          "scheme": "doi",
+          "value": "10.13039/501100014374"
+        },
+        {
+          "scheme": "PIC",
+          "value": "999976202"
+        },
+        {
+          "scheme": "GRID",
+          "value": "grid.6835.8"
+        },
+        {
+          "scheme": "Wikidata",
+          "value": "Q1640731"
+        }
+      ]
+    }
+  ]
+}
