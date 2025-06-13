@@ -72,10 +72,45 @@ def get_paged_projects(db, per_page=10, total_pages=None):
         if not cursor:
             print("No more pages.")
             break
-    
+
+def get_paged_researchproducts(db, per_page=10, total_pages=None):
+    url = "https://api.openaire.eu/graph/v1/researchProducts"
+    page_size = per_page
+    cursor = "*"  # initial cursor for the first page
+
+    if total_pages is None or total_pages <= 0:
+        it = itertools.count(1)
+    else:
+        it = range(1, total_pages + 1)
+
+    for page in it:
+        params = {
+            "pageSize": page_size,
+            "cursor": cursor
+        }
+
+        response = requests.get(url, params=params)
+        if response.status_code != 200:
+            print(f"Error in the request: {response.status_code}")
+            print(response.text)
+            break
+
+        data = response.json()
+
+        print(f"\n--- Page {page} ---")
+        for e in data.get("results", []):
+            print(f"id: {e.get('id')}, Title: {e.get('mainTitle')}")
+            db.reserarchProducts.insert_one(e)
+
+        # Get the next cursor
+        cursor = data.get("header", {}).get("nextCursor")
+        if not cursor:
+            print("No more pages.")
+            break
+
 def main():
     parser = argparse.ArgumentParser(description="Process OpenAire elements by page.")
-    parser.add_argument('collection', choices=['organizations', 'projects'],
+    parser.add_argument('collection', choices=['organizations', 'projects','researchproducts'],
                         help='Which collection to import: organizations or projects')
     parser.add_argument('--per-page', type=int, default=100, help='Number of elements per page')
     parser.add_argument('--total-pages', type=int, default=None, help='Total number of pages to process (if not specified, process all)')
@@ -101,6 +136,11 @@ def main():
             get_paged_projects(db, args.per_page, args.total_pages)
             total = db.projects.count_documents({})
             print(f"\nTotal projects saved: {total}")
+        elif args.collection == 'researchproducts':
+            print("Getting paged researchProducts...")
+            get_paged_researchproducts(db, args.per_page, args.total_pages)
+            total = db.researchProducts.count_documents({})
+            print(f"\nTotal researchProducts saved: {total}")
 
 if __name__ == "__main__":
     main()
